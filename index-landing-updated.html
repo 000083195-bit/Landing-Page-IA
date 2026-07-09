@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pesado y al Fallo ofrece accesorios y suplementos fitness para entrenar con más intensidad, estilo y resultados."
+    />
+    <title>Pesado y al Fallo | Fitness Hardcore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .user-greeting {
+        position: absolute;
+        top: 1rem;
+        right: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+        background: rgba(196, 30, 58, 0.1);
+        border: 1px solid rgba(196, 30, 58, 0.3);
+        border-radius: 8px;
+        font-size: 0.9rem;
+      }
+
+      .user-greeting a {
+        color: #ff4d4d;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .user-greeting a:hover {
+        color: #c41e3a;
+      }
+
+      .user-greeting .username {
+        color: #ff4d4d;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <?php
+    // Incluir configuración y verificar autenticación
+    require_once __DIR__ . '/config.php';
+    
+    if (!isLoggedIn() || $_SESSION['rol'] !== 'user') {
+        header('Location: /login.php');
+        exit;
+    }
+    ?>
+    
+    <div class="user-greeting">
+      <span>Hola, <span class="username"><?php echo htmlspecialchars($_SESSION['nombre']); ?></span></span>
+      <a href="?logout=1">Cerrar sesión</a>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Ir al inicio de Pesado y al Fallo">
+        <span class="brand-mark">P</span>
+        <span>Pesado y al Fallo</span>
+      </a>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a href="#beneficios">Beneficios</a>
+        <a href="#promocion">Promoción</a>
+        <a href="#productos">Productos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Accesorios + suplementos para entrenar sin límites</p>
+          <h1>Eleva tus gains y domina cada sesión.</h1>
+          <p class="hero-copy">
+            Equipamiento premium, energía real y apoyo para que cada rep cuente.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#productos">Compra ahora</a>
+            <a class="btn btn-secondary" href="#beneficios">Descubre más</a>
+          </div>
+          <ul class="hero-stats" aria-label="Estadísticas destacadas">
+            <li><strong>500+</strong><span>productos</span></li>
+            <li><strong>24h</strong><span>envío rápido</span></li>
+            <li><strong>4.9/5</strong><span>valoración</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="beneficios" class="section benefits-section">
+        <div class="section-heading">
+          <p class="eyebrow">Por qué la gente nos elige</p>
+          <h2>Todo lo que necesitas para entrenar más duro.</h2>
+        </div>
+        <div class="benefits-grid">
+          <article class="card benefit-card">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 3h10v4H7zM5 7h14v3H5zM8 12h8v8H8z" />
+              </svg>
+            </div>
+            <h3>Equipamiento brutal</h3>
+            <p>Guantes, cinturones y accesorios que se sienten tan fuertes como tu rutina.</p>
+          </article>
+          <article class="card benefit-card">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 4h8l2 4-2 4H8L6 8zM9 14h6l1 4H8z" />
+              </svg>
+            </div>
+            <h3>Fuel para tu volumen</h3>
+            <p>Proteína, pre-entreno y recovery para que tu energía no se vaya en el primer set.</p>
+          </article>
+          <article class="card benefit-card">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3l2.2 5.8L20 10l-5.8 1.2L12 17l-2.2-5.8L4 10l5.8-1.2z" />
+              </svg>
+            </div>
+            <h3>Rendimiento real</h3>
+            <p>Productos seleccionados para ayudarte a recuperar, crecer y pelear por cada PR.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="promocion" class="section promo-section">
+        <div class="promo-card">
+          <div class="promo-copy">
+            <p class="eyebrow">Oferta relámpago</p>
+            <h2>Hasta 30% OFF en packs de energía y recuperación.</h2>
+            <p>
+              La semana de los gains está aquí. Consigue tu combo ideal antes de que se termine la oferta.
+            </p>
+            <a class="btn btn-primary" href="#contacto">Ver oferta</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="productos" class="section products-section">
+        <div class="section-heading">
+          <p class="eyebrow">Nuestro catálogo</p>
+          <h2>Explora nuestros productos premium.</h2>
+        </div>
+        <div class="products-grid">
+          <article class="card product-card">
+            <div class="product-image"></div>
+            <h3>Guantes de Levantamiento</h3>
+            <p>Guantes premium para máxima agarre</p>
+            <p class="price">$29.99</p>
+          </article>
+          <article class="card product-card">
+            <div class="product-image"></div>
+            <h3>Cinturón de Levantamiento</h3>
+            <p>Estabilidad total en tus lifts</p>
+            <p class="price">$49.99</p>
+          </article>
+          <article class="card product-card">
+            <div class="product-image"></div>
+            <h3>Proteína Whey 2KG</h3>
+            <p>Ganancia de músculos garantizada</p>
+            <p class="price">$39.99</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contacto" class="section contact-section">
+        <div class="section-heading">
+          <p class="eyebrow">Ponte en contacto</p>
+          <h2>¿Tienes preguntas? Escríbenos</h2>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2024 Pesado y al Fallo. Todos los derechos reservados.</p>
+    </footer>
+
+    <?php
+    // Logout
+    if (isset($_GET['logout'])) {
+        $auth = new Auth();
+        $auth->logout();
+        header('Location: /login.php');
+        exit;
+    }
+    ?>
+  </body>
+</html>

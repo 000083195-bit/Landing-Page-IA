@@ -1,0 +1,16 @@
+{
+  "name": "pesado/fallo",
+  "description": "Sistema de landing page, dashboard y gestión de usuarios",
+  "version": "1.0.0",
+  "require": {
+    "php": "^7.4"
+  },
+  "require-dev": {},
+  "autoload": {
+    "files": [
+      "config.php",
+      "db.php",
+      "auth.php"
+    ]
+  }
+}

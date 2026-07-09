@@ -1,0 +1,64 @@
+# Dependencias
+vendor/
+node_modules/
+composer.lock
+
+# Variables de entorno
+.env
+.env.local
+.env.*.local
+
+# Archivos del sistema
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+
+# Logs
+*.log
+logs/
+
+# Caché
+cache/
+.cache/
+tmp/
+temp/
+
+# Base de datos local
+*.db
+*.sqlite
+*.sqlite3
+
+# Directorio público (si aplica)
+public/uploads/
+public/temp/
+
+# Archivos temporales
+*.bak
+*.tmp
+
+# Windows
+desktop.ini
+$RECYCLE.BIN/
+
+# Railway
+.railway/
+
+# Heroku
+.env.production
+Procfile.local
+
+# Node (si usas npm)
+package-lock.json
