@@ -27,7 +27,11 @@ class Database {
         } catch (Exception $e) {
             $this->error = $e->getMessage();
             error_log($this->error);
-            die('Error de conexión a la base de datos');
+            $debug = getenv('DEBUG');
+            if ($debug === 'true' || getenv('ENVIRONMENT') === 'development') {
+                die('Error de conexión a la base de datos: ' . $this->error);
+            }
+            die('Error de conexión a la base de datos. Revisa la configuración de las variables de entorno y la existencia de la base de datos.');
         }
     }
 
