@@ -8,22 +8,21 @@ session_start();
 // Detectar si estamos en producción (Railway) o local
 define('ENVIRONMENT', getenv('ENVIRONMENT') ?: 'development');
 
-// Configuración de base de datos
-if (ENVIRONMENT === 'production') {
-    // Configuración para Railway
-    define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
-    define('DB_USER', getenv('DB_USER') ?: 'root');
-    define('DB_PASS', getenv('DB_PASS') ?: '');
-    define('DB_NAME', getenv('DB_NAME') ?: 'pesado_fallo');
-    define('DB_PORT', getenv('DB_PORT') ?: 3306);
-} else {
-    // Configuración local
-    define('DB_HOST', 'localhost');
-    define('DB_USER', 'root');
-    define('DB_PASS', '');
-    define('DB_NAME', 'pesado_fallo');
-    define('DB_PORT', 3306);
+// Función helper para leer variables de entorno
+function env($key, $default = null) {
+    $value = getenv($key);
+    if ($value !== false && $value !== '') {
+        return $value;
+    }
+    return $default;
 }
+
+// Configuración de base de datos
+define('DB_HOST', env('DB_HOST', env('MYSQL_HOST', env('RAILWAY_MYSQL_HOST', 'localhost'))));
+define('DB_USER', env('DB_USER', env('MYSQL_USER', env('DB_USERNAME', 'root'))));
+define('DB_PASS', env('DB_PASS', env('MYSQL_PASSWORD', env('DB_PASSWORD', ''))));
+define('DB_NAME', env('DB_NAME', env('MYSQL_DATABASE', env('DATABASE_NAME', 'pesado_fallo'))));
+define('DB_PORT', env('DB_PORT', env('MYSQL_PORT', env('DB_PORT', 3306))));
 
 // Configuración general
 define('APP_NAME', 'Pesado y al Fallo');
