@@ -26,7 +26,7 @@ define('DB_PORT', env('DB_PORT', env('MYSQL_PORT', env('DB_PORT', 3306))));
 
 // Configuración general
 define('APP_NAME', 'Pesado y al Fallo');
-define('APP_URL', getenv('APP_URL') ?: 'http://localhost');
+define('APP_URL', getenv('APP_URL') ?: '');
 define('SESSION_TIMEOUT', 3600); // 1 hora en segundos
 
 // Configuración de seguridad
@@ -44,7 +44,13 @@ function isProduction() {
 }
 
 function getBaseUrl() {
-    return rtrim(APP_URL, '/');
+    if (!empty(APP_URL)) {
+        return rtrim(APP_URL, '/');
+    }
+
+    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    return $scheme . '://' . $host;
 }
 
 function redirect($path) {
